@@ -8,7 +8,7 @@ import Str from "@ledgerhq/hw-app-str";
 const serverAddresses = {
     public: 'https://horizon-block-explorer.kininfrastructure.com',
     test: 'https://horizon-testnet.kin.org',
-    local: 'https://horizon-block-explorer.kininfrastructure.com',
+    local: 'http://localhost:8000',
 }
 
 /**
