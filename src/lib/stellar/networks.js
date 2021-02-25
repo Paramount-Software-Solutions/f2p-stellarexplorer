@@ -5,9 +5,9 @@ const networks = {
 }
 
 const hostnameToNetwork = hostname => {
-  if (hostname === 'kinexplorer.com' || hostname === 'publicnet.local')
+  if (hostname === 'explorer.farm2plate.io' || hostname === 'publicnet.local')
     return networks.public
-  else if (hostname === 'testnet.kinexplorer.com' || hostname === 'testnet.local')
+  else if (hostname === 'testexp.farm2plate.io' || hostname === 'testnet.local')
     return networks.test
   else return networks.local
 }
