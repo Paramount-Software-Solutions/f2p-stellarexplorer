@@ -236,8 +236,7 @@ class QrcodeRestore extends React.Component {
 				body = <div
 					className="container-fluid"><label
 					style={{color:"#890000",marginTop:'10px'}}>
-						CONNECT YOUR LEDGER AND OPEN KIN APP
-					</label>
+						CONNECT YOUR LEDGER AND OPEN F2P APP </label>
 					<br/>
 					<br/>
 					<Button

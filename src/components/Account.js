@@ -76,7 +76,7 @@ const NameValueTable = ({data, decodeValue = false}) => {
 const rate = storage.getItem('currentRate') || null;
 
 const balanceRow = (bal) => (
-  <tr key={bal.asset_code ? `${bal.asset_code}-${bal.asset_issuer}` : 'KIN'}>
+  <tr key={bal.asset_code ? `${bal.asset_code}-${bal.asset_issuer}` : 'F2P'}>
     <td>
       <Asset
         type={bal.asset_type}
@@ -90,7 +90,7 @@ const balanceRow = (bal) => (
     <td>
       <PaymentButton
           filterFn={null}
-        label={"Send " + (bal.asset_code ? bal.asset_code : 'KIN')}
+        label={"Send " + (bal.asset_code ? bal.asset_code : 'F2P')}
         url={'_blank'}
           destinationId={accountInfo.id}
           asset_code={bal.asset_code}
