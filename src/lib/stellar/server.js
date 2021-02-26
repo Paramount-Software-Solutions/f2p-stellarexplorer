@@ -6,8 +6,8 @@ import Transport from "@ledgerhq/hw-transport-u2f"; // for browser
 import Str from "@ledgerhq/hw-app-str";
 
 const serverAddresses = {
-    public: 'https://horizon-block-explorer.kininfrastructure.com',
-    test: 'https://horizon-testnet.kin.org',
+    public: 'http://localhost:8000',
+    test: 'http://localhost:8000',
     local: 'http://localhost:8000',
 }
 
