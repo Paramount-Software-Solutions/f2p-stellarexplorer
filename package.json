@@ -16,9 +16,6 @@
     "block explorer",
     "blockchain"
   ],
-  "engines": {
-    "node": "8.x.x"
-  },
   "dependencies": {
     "@ledgerhq/hw-app-str": "^4.45.0",
     "@ledgerhq/hw-transport-u2f": "^4.45.0",

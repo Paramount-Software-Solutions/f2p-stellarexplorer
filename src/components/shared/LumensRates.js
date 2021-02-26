@@ -21,20 +21,12 @@ class LumensRatesContainer extends React.PureComponent {
 	}
 
 	updatePrice() {
-		fetch(FEED_URL)
-		.then(rsp => rsp.json())
-		.then(rspJson => {
 			const newState = {
-				change: rspJson.data.prices.latest_price.percent_change.day,
-				usd: rspJson.data.prices.latest,
+				change: 0,
+				usd: 1,
 			}
 			storage.setItem('currentRate', rspJson.data.prices.latest);
 			this.setState(newState)
-		})
-		.catch(err => {
-			console.error(`Failed to fetch price: [${err}]`)
-			console.error(`stack: [${err.stack}]`)
-		})
 	}
 
 	render() {
@@ -61,7 +53,7 @@ class LumensRates extends React.PureComponent {
 	render() {
 		return (
 			<span>
-        KIN/USD: {this.props.usd} {this.renderChange(this.props.change)}
+        F2P/USD: {this.props.usd} {this.renderChange(this.props.change)}
       </span>
 		)
 	}
