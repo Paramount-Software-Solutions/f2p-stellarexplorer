@@ -6,9 +6,9 @@ import Transport from "@ledgerhq/hw-transport-u2f"; // for browser
 import Str from "@ledgerhq/hw-app-str";
 
 const serverAddresses = {
-    public: 'http://localhost:8000',
-    test: 'http://localhost:8000',
-    local: 'http://localhost:8000',
+    public: 'http://18.188.149.161:8000',
+    test: 'http://18.188.149.161:8000',
+    local: 'http://18.188.149.161:8000',
 }
 
 /**
