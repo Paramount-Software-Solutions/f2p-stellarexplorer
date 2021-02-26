@@ -32,7 +32,7 @@ class WrappedServer extends sdk.Server {
 	  }
 
     // allowHttp: public/test use HTTPS; local can use HTTP
-    super(serverAddresses[network], {allowHttp: network === networks.local})
+    super(serverAddresses[network], {allowHttp: true})
   }
 
 
