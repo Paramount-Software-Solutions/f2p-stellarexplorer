@@ -7,10 +7,11 @@ import MenuItem from 'react-bootstrap/lib/MenuItem'
 import {Link} from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
 import {FormattedMessage, injectIntl} from 'react-intl'
-
+import PaymentButton from '../Input'
 import LanguageSelector from './LanguageSelector'
 import NetworkSelector from './NetworkSelector'
 import logoImg from '../../img/logo.png'
+
 
 class Header extends React.Component {
 	render() {
@@ -20,7 +21,7 @@ class Header extends React.Component {
 				<Navbar.Header>
 					<Navbar.Brand>
 						<Link to="/">
-							<span className="brand-text">Kin Explorer</span>
+							<span className="brand-text">F2P Explorer</span>
 						</Link>
 					</Navbar.Brand>
 					<Navbar.Toggle />
@@ -62,11 +63,6 @@ class Header extends React.Component {
 						<LinkContainer to="/payments">
 							<NavItem>
 								<FormattedMessage id="payments" />
-							</NavItem>
-						</LinkContainer>
-						<LinkContainer to="/statistics">
-							<NavItem>
-								Statistics
 							</NavItem>
 						</LinkContainer>
 					</Nav>

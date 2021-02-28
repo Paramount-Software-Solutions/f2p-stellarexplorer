@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import FetchPonyfill from 'fetch-ponyfill'
+import {storageInit} from '../../lib/utils';
 const fetch = FetchPonyfill().fetch
 
-const FEED_URL = 'https://api.coinmarketcap.com/v1/ticker/kin/'
 const UPDATE_INTERVAL = 5 * 60 * 1000
-
+const storage = storageInit()
 class LumensRatesContainer extends React.PureComponent {
 	componentDidMount() {
 		this.updatePrice()
@@ -20,20 +20,12 @@ class LumensRatesContainer extends React.PureComponent {
 	}
 
 	updatePrice() {
-		fetch(FEED_URL)
-		.then(rsp => rsp.json())
-		.then(rspJson => {
-			const lumens = rspJson[0]
 			const newState = {
-				change: lumens.percent_change_24h,
-				usd: lumens.price_usd,
+				change: 0,
+				usd: 1,
 			}
+			storage.setItem('currentRate', 1);
 			this.setState(newState)
-		})
-		.catch(err => {
-			console.error(`Failed to fetch price: [${err}]`)
-			console.error(`stack: [${err.stack}]`)
-		})
 	}
 
 	render() {
@@ -60,7 +52,7 @@ class LumensRates extends React.PureComponent {
 	render() {
 		return (
 			<span>
-        KIN/USD: {this.props.usd} {this.renderChange(this.props.change)}
+        F2P/USD: {this.props.usd} {this.renderChange(this.props.change)}
       </span>
 		)
 	}

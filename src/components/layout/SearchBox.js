@@ -8,6 +8,7 @@ import {injectIntl} from 'react-intl'
 
 import {searchStrToPath} from '../../lib/search'
 import {isSecretKey} from '../../lib/utils'
+import SponsoredLink from "../shared/SponsoredLink.js";
 
 const HelpModal = props => (
   <Modal id="help-modal" show={props.show} onHide={props.handleCloseFn}>
@@ -98,7 +99,7 @@ const HelpModal = props => (
       <hr />
       <h4>OpenSearch:</h4>
       <div>
-        Kin Explorer supports{' '}
+        F2P Explorer supports{' '}
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -107,7 +108,7 @@ const HelpModal = props => (
           OpenSearch
         </a>. This allows you to search directly from your browser search box or
         search bar. You should see something like the following when you
-        navigate to Kin Explorer then open the search box. Install it from
+        navigate to F2P Explorer then open the search box. Install it from
         there:
         <br />
         <img
@@ -178,6 +179,7 @@ class SearchBox extends React.Component {
         {this.state.show && (
           <HelpModal handleCloseFn={this.handleClose} show={this.state.show} />
         )}
+        <SponsoredLink />
       </div>
     )
   }

@@ -9,7 +9,7 @@ import Tabs from 'react-bootstrap/lib/Tabs'
 import {injectIntl, FormattedMessage} from 'react-intl'
 import {FederationServer, StrKey} from 'stellar-sdk'
 import has from 'lodash/has'
-
+import {storageInit} from '../lib/utils'
 import knownAccounts from '../data/known_accounts'
 import {
   base64Decode,
@@ -30,6 +30,9 @@ import OperationTable from './OperationTable'
 import OfferTable from './OfferTable'
 import PaymentTable from './PaymentTable'
 import TransactionTable from './TransactionTableContainer'
+import PaymentButton from './Input'
+
+const storage = storageInit()
 
 const stellarAddressFromURI = () => {
   if (!window || !window.location || !window.location.pathname) return
@@ -37,6 +40,8 @@ const stellarAddressFromURI = () => {
   const lastPath = path.substring(path.lastIndexOf('/') + 1)
   return isStellarAddress(lastPath) ? lastPath : undefined
 }
+
+let accountInfo = null;
 
 const NameValueTable = ({data, decodeValue = false}) => {
   if (!data || Object.keys(data).length === 0)
@@ -68,9 +73,10 @@ const NameValueTable = ({data, decodeValue = false}) => {
     </Table>
   )
 }
+const rate = storage.getItem('currentRate') || null;
 
-const balanceRow = bal => (
-  <tr key={bal.asset_code ? `${bal.asset_code}-${bal.asset_issuer}` : 'XLM'}>
+const balanceRow = (bal) => (
+  <tr key={bal.asset_code ? `${bal.asset_code}-${bal.asset_issuer}` : 'F2P'}>
     <td>
       <Asset
         type={bal.asset_type}
@@ -79,10 +85,17 @@ const balanceRow = bal => (
       />
     </td>
     <td>
-      <span className="break">{bal.balance}</span>
+      <span className="break">{bal.balance} {rate && '($'+ (bal.balance*rate).toFixed(2) +')'}</span>
     </td>
     <td>
-      <span className="break">{bal.limit}</span>
+      <PaymentButton
+          filterFn={null}
+        label={"Send " + (bal.asset_code ? bal.asset_code : 'F2P')}
+        url={'_blank'}
+          destinationId={accountInfo.id}
+          asset_code={bal.asset_code}
+          asset_issuer={bal.asset_issuer}
+      />
     </td>
   </tr>
 )
@@ -98,7 +111,6 @@ const Balances = props => (
           <FormattedMessage id="balance" />
         </th>
         <th>
-          <FormattedMessage id="limit" />
         </th>
       </tr>
     </thead>
@@ -175,6 +187,7 @@ const AccountSummaryPanel = ({
   formatMessageFn,
   knownAccounts,
 }) => {
+	accountInfo = a;
   const header = titleWithJSONButton(
     formatMessageFn({id: 'account'}),
     accountUrl
@@ -202,32 +215,6 @@ const AccountSummaryPanel = ({
                 <Col md={9}>{stellarAddr}</Col>
               </Row>
             )}
-            <Row>
-              <Col md={3}>
-                <FormattedMessage id="home.domain" />:
-              </Col>
-              <Col md={9}>
-                <a href={`https://${a.home_domain}`} target="_blank">
-                  {a.home_domain}
-                </a>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={3}>
-                <FormattedMessage id="inflation" />:
-              </Col>
-              <Col md={9}>
-                {a.inflation_destination && (
-                  <AccountLink account={a.inflation_destination} />
-                )}
-              </Col>
-            </Row>
-            <Row>
-              <Col md={3}>
-                <FormattedMessage id="subentry.count" />:
-              </Col>
-              <Col md={9}>{a.subentry_count}</Col>
-            </Row>
           </Col>
           {has(knownAccounts, a.id) &&
             knownAccounts[a.id].type !== 'inflation_pools' && (
@@ -400,7 +387,6 @@ class AccountContainer extends React.Component {
     account: null,
     isLoading: true,
   }
-
   componentDidMount() {
     this.loadAccount(this.props.match.params.id)
   }
@@ -410,13 +396,16 @@ class AccountContainer extends React.Component {
   }
 
   loadAccount(accountId) {
-    if (isPublicKey(accountId)) this.loadAccountByKey(accountId)
+    if (isPublicKey(accountId))
+      this.loadAccountByKey(accountId)
     else if (isStellarAddress(accountId))
       this.loadAccountByStellarAddress(accountId)
-    else
-      handleFetchDataFailure(accountId)(
-        new Error(`Unrecognized account: ${accountId}`)
-      )
+    else{
+	    handleFetchDataFailure(accountId)(
+		    new Error(`Unrecognized account: ${accountId}`)
+	    )
+    }
+
   }
 
   loadAccountByStellarAddress(stellarAddr) {
