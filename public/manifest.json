@@ -1,6 +1,6 @@
 {
-  "short_name": "f2pexplorer",
-  "name": "F2P Explorer",
+  "short_name": "kinexplorer",
+  "name": "Kin Explorer",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

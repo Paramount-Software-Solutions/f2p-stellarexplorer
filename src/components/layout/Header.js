@@ -21,7 +21,7 @@ class Header extends React.Component {
 				<Navbar.Header>
 					<Navbar.Brand>
 						<Link to="/">
-							<span className="brand-text">F2P Explorer</span>
+							<span className="brand-text">Kin Explorer</span>
 						</Link>
 					</Navbar.Brand>
 					<Navbar.Toggle />

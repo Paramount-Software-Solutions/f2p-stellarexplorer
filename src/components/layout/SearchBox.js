@@ -99,7 +99,7 @@ const HelpModal = props => (
       <hr />
       <h4>OpenSearch:</h4>
       <div>
-        F2P Explorer supports{' '}
+        Kin Explorer supports{' '}
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -108,7 +108,7 @@ const HelpModal = props => (
           OpenSearch
         </a>. This allows you to search directly from your browser search box or
         search bar. You should see something like the following when you
-        navigate to F2P Explorer then open the search box. Install it from
+        navigate to Kin Explorer then open the search box. Install it from
         there:
         <br />
         <img
