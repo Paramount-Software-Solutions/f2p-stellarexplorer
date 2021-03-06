@@ -29,6 +29,7 @@ import Ledger from './components/Ledger'
 import Ledgers from './components/Ledgers'
 import Transaction from './components/Transaction'
 import Transactions from './components/Transactions'
+import Statistics from './components/Statistics'
 import Account from './components/Account'
 import Accounts from './components/Accounts'
 import Anchor from './components/Anchor'
@@ -150,6 +151,7 @@ class App extends Component {
                 <Route path="/trades" component={Trades} />
                 <Route path="/txs" component={Transactions} />
                 <Route path="/tx/:id" component={Transaction} />
+                <Route path="/statistics" component={Statistics} />
                 <Route
                   path="/search/:id"
                   render={({match}) => {

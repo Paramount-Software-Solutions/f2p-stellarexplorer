@@ -39,6 +39,16 @@ class Header extends React.Component {
 							switcher={this.props.networkSwitcher}
 						/>
 					</Navbar.Form>
+					<Navbar.Form pullRight>
+						<PaymentButton
+							filterFn={null}
+							label={"Donate"}
+							url={'_blank'}
+							destinationId='GBM6GP3FDOU2T2XLFYVWBS4NJIOFBA7HEQ6BXIXCDDKZUFEZRYGU6TL5'
+							asset_code={null}
+							asset_issuer={null}
+						/>
+					</Navbar.Form>
 					<Nav>
 						<LinkContainer to="/operations">
 							<NavItem>
@@ -63,6 +73,11 @@ class Header extends React.Component {
 						<LinkContainer to="/payments">
 							<NavItem>
 								<FormattedMessage id="payments" />
+							</NavItem>
+						</LinkContainer>
+						<LinkContainer to="/statistics">
+							<NavItem>
+								Statistics
 							</NavItem>
 						</LinkContainer>
 					</Nav>
