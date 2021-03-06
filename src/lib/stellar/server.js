@@ -23,12 +23,12 @@ class WrappedServer extends sdk.Server {
 	  if (network === networks.public)
 	  {
 		  sdk.Network.usePublicNetwork()
-		  StellarSdk.Network.use(new StellarSdk.Network('Kin Mainnet ; December 2018'));
+		  StellarSdk.Network.use(new StellarSdk.Network('F2P PubNet ; February 2021'));
 	  }
 	  else if (network === networks.test)
 	  {
 		  sdk.Network.useTestNetwork()
-		  StellarSdk.Network.use(new StellarSdk.Network('Kin Testnet ; December 2018'));
+		  StellarSdk.Network.use(new StellarSdk.Network('F2P TestNet ; February 2021'));
 	  }
 
     // allowHttp: public/test use HTTPS; local can use HTTP

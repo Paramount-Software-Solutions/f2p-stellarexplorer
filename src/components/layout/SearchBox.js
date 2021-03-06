@@ -45,36 +45,6 @@ const HelpModal = props => (
         />
       </div>
       <div>
-        <h5>Anchor Name</h5>
-        <div>
-          as listed on the{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://kinexplorer.com/anchors"
-          >
-            Anchors Page
-          </a>
-        </div>
-        <div>
-          <br />
-          Full name:<br />
-          <img
-            src={`${process.env.PUBLIC_URL}/search/search_anchor_name_full.png`}
-            alt="search by anchor full name"
-          />
-        </div>
-        <div style={{marginTop: 20}}>
-          Partial name:<br />
-          <img
-            src={`${
-              process.env.PUBLIC_URL
-            }/search/search_anchor_name_partial.png`}
-            alt="search by anchor partial name"
-          />
-        </div>
-      </div>
-      <div>
         <h5>Asset Code</h5>
         <img
           src={`${process.env.PUBLIC_URL}/search/search_asset.png`}
@@ -99,7 +69,7 @@ const HelpModal = props => (
       <hr />
       <h4>OpenSearch:</h4>
       <div>
-        Kin Explorer supports{' '}
+        F2P Explorer supports{' '}
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -108,7 +78,7 @@ const HelpModal = props => (
           OpenSearch
         </a>. This allows you to search directly from your browser search box or
         search bar. You should see something like the following when you
-        navigate to Kin Explorer then open the search box. Install it from
+        navigate to F2P Explorer then open the search box. Install it from
         there:
         <br />
         <img
